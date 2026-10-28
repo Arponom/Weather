@@ -1,0 +1,24 @@
+spring:
+  application:
+    name: weather
+  datasource:
+    url: ${DATABASE_URL:jdbc:postgresql://localhost:5432/weather}
+    username: ${POSTGRES_USER:weather}
+    password: ${POSTGRES_PASSWORD}
+  flyway:
+    enabled: true
+weather:
+  city: ${WEATHER_CITY}
+  latitude: ${WEATHER_LATITUDE}
+  longitude: ${WEATHER_LONGITUDE}
+  api-key: ${OPENWEATHER_API_KEY}
+  endpoint: ${OPENWEATHER_ENDPOINT:https://api.openweathermap.org/data/2.5/weather}
+  cron: ${WEATHER_CRON:0 0 * * * *}
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health
+  endpoint:
+    health:
+      show-details: never
